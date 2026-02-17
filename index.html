@@ -1,89 +1,684 @@
-<!DOCTYPE html><html lang="uz">
+<!DOCTYPE html>
+<html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ProBiz — Professional Landing</title>
-  <meta name="description" content="Ko‘p sotuv qiladigan professional landing sahifa." />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>premium apex | $1k lend</title>
+  <!-- google fonts & font awesome for that premium feel -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <style>
-    :root{--bg:#0b0f19;--card:#121829;--text:#e6e9f2;--muted:#9aa3b2;--brand:#6c8cff;--brand2:#22d3ee}
-    *{box-sizing:border-box}
-    body{margin:0;font-family:Inter,system-ui,Arial;background:linear-gradient(180deg,#0b0f19,#0b0f19 60%,#0a0e17);color:var(--text)}
-    a{color:inherit;text-decoration:none}
-    .container{max-width:1100px;margin:0 auto;padding:24px}
-    header{display:flex;align-items:center;justify-content:space-between}
-    .logo{font-weight:800;letter-spacing:.5px}
-    .btn{background:linear-gradient(135deg,var(--brand),var(--brand2));padding:12px 18px;border-radius:12px;font-weight:700;box-shadow:0 10px 30px rgba(108,140,255,.35)}
-    .hero{display:grid;grid-template-columns:1.1fr .9fr;gap:28px;align-items:center;padding:48px 0}
-    .hero h1{font-size:48px;line-height:1.05;margin:0 0 14px}
-    .hero p{color:var(--muted);font-size:18px}
-    .card{background:var(--card);border-radius:20px;padding:22px;box-shadow:0 20px 60px rgba(0,0,0,.35)}
-    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:22px}
-    .feature h3{margin:8px 0}
-    .price{display:flex;align-items:baseline;gap:8px}
-    .price b{font-size:40px}
-    .testimonials{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
-    footer{color:var(--muted);padding:28px 0;text-align:center}
-    @media (max-width:900px){
-      .hero{grid-template-columns:1fr}
-      .grid{grid-template-columns:1fr}
-      .testimonials{grid-template-columns:1fr}
-      .hero h1{font-size:36px}
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #faf9fe;
+      color: #1b1b2f;
+      line-height: 1.3;
+      overflow-x: hidden;
+    }
+
+    /* smooth premium container */
+    .site-wrapper {
+      max-width: 1440px;
+      margin: 0 auto;
+      background-color: #ffffff;
+      box-shadow: 0 0 80px rgba(0,0,0,0.02);
+    }
+
+    /* animated gradient orb background (ultra subtle) */
+    .hero-section {
+      position: relative;
+      background: #ffffff;
+      overflow: hidden;
+      padding: 2rem 2rem 6rem 2rem;
+    }
+
+    .hero-section::before {
+      content: '';
+      position: absolute;
+      width: 140%;
+      height: 140%;
+      top: -30%;
+      left: -20%;
+      background: radial-gradient(circle at 30% 50%, rgba(200, 190, 255, 0.35) 0%, transparent 50%),
+                  radial-gradient(circle at 80% 70%, rgba(255, 220, 240, 0.3) 0%, transparent 55%);
+      filter: blur(70px);
+      z-index: 0;
+      animation: slowOrbit 28s infinite alternate ease-in-out;
+    }
+
+    @keyframes slowOrbit {
+      0% { transform: scale(1) rotate(0deg); opacity: 0.6; }
+      100% { transform: scale(1.2) rotate(3deg); opacity: 0.9; }
+    }
+
+    /* all content sits above floating blur */
+    .header, .hero-content, .features, .testimonials, .cta-section, .footer {
+      position: relative;
+      z-index: 5;
+    }
+
+    /* header – clean & minimal */
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.6rem 2rem;
+      background: rgba(255,255,255,0.5);
+      backdrop-filter: blur(8px);
+      border-radius: 60px;
+      margin-bottom: 3rem;
+      border: 1px solid rgba(255,255,255,0.8);
+      box-shadow: 0 20px 40px -20px rgba(0,0,0,0.15);
+      animation: slideDown 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+
+    @keyframes slideDown {
+      0% { opacity: 0; transform: translateY(-30px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+
+    .logo {
+      font-size: 1.9rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      background: linear-gradient(130deg, #1a1a35, #4a3a7c);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .logo i {
+      background: none;
+      -webkit-text-fill-color: #4a3a7c;
+      margin-right: 4px;
+      font-size: 2rem;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2.5rem;
+      align-items: center;
+    }
+    .nav-links a {
+      text-decoration: none;
+      color: #2e2e45;
+      font-weight: 500;
+      font-size: 1rem;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover {
+      color: #7f6aee;
+    }
+    .nav-btn {
+      background: #1b1b2f;
+      color: white !important;
+      padding: 0.6rem 1.8rem;
+      border-radius: 40px;
+      font-weight: 600;
+      transition: all 0.3s !important;
+      border: 1px solid transparent;
+    }
+    .nav-btn:hover {
+      background: #ffffff;
+      color: #1b1b2f !important;
+      border-color: #1b1b2f;
+      transform: scale(1.02);
+    }
+
+    /* hero grid */
+    .hero-content {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      align-items: center;
+      gap: 2rem;
+      padding: 1rem 2rem 3rem 2rem;
+    }
+
+    .hero-left {
+      animation: fadeInLeft 1s ease-out;
+    }
+    @keyframes fadeInLeft {
+      0% { opacity: 0; transform: translateX(-35px); }
+      100% { opacity: 1; transform: translateX(0); }
+    }
+
+    .premium-badge {
+      display: inline-block;
+      background: rgba(127, 106, 238, 0.12);
+      backdrop-filter: blur(4px);
+      padding: 0.4rem 1.2rem;
+      border-radius: 60px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 0.3px;
+      color: #4a3a7c;
+      border: 1px solid rgba(127,106,238,0.3);
+      margin-bottom: 1.7rem;
+      animation: badgePulse 2.2s infinite;
+    }
+    @keyframes badgePulse {
+      0% { box-shadow: 0 0 0 0 rgba(127,106,238,0.4); }
+      70% { box-shadow: 0 0 0 8px rgba(127,106,238,0); }
+      100% { box-shadow: 0 0 0 0 rgba(127,106,238,0); }
+    }
+
+    .hero-left h1 {
+      font-size: 3.7rem;
+      font-weight: 800;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      color: #0b0b1e;
+      margin-bottom: 1.2rem;
+    }
+    .hero-left h1 span {
+      background: linear-gradient(145deg, #7f6aee, #c07dee);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      display: inline-block;
+    }
+
+    .hero-desc {
+      font-size: 1.2rem;
+      color: #46465e;
+      max-width: 85%;
+      margin-bottom: 2.5rem;
+      font-weight: 400;
+      line-height: 1.6;
+    }
+
+    .cta-group {
+      display: flex;
+      gap: 1.3rem;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .btn-primary {
+      background: #1b1b2f;
+      color: white;
+      border: none;
+      padding: 1rem 2.8rem;
+      border-radius: 60px;
+      font-weight: 700;
+      font-size: 1.1rem;
+      cursor: pointer;
+      transition: all 0.3s;
+      box-shadow: 0 20px 30px -12px rgba(27,27,47,0.35);
+      border: 1px solid #1b1b2f;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .btn-primary i {
+      transition: transform 0.3s;
+    }
+    .btn-primary:hover {
+      background: #ffffff;
+      color: #1b1b2f;
+      transform: translateY(-4px);
+      box-shadow: 0 30px 35px -14px #b6a5f0;
+    }
+    .btn-primary:hover i {
+      transform: translateX(5px);
+    }
+    .btn-outline {
+      background: transparent;
+      border: 1.5px solid #cdcdff;
+      padding: 0.95rem 2.2rem;
+      border-radius: 60px;
+      font-weight: 600;
+      color: #2d2d47;
+      transition: all 0.3s;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .btn-outline:hover {
+      border-color: #7f6aee;
+      background: #f8f7ff;
+      transform: scale(1.02);
+    }
+
+    /* hero right mock */
+    .hero-right {
+      position: relative;
+      animation: floatIn 1.4s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    }
+    @keyframes floatIn {
+      0% { opacity: 0; transform: translateY(45px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+
+    .card-stack {
+      background: rgba(255,255,255,0.75);
+      backdrop-filter: blur(20px);
+      border-radius: 48px;
+      padding: 2rem 1.8rem;
+      border: 1px solid rgba(255,255,255,0.9);
+      box-shadow: 0 50px 70px -25px rgba(70,50,150,0.25);
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .stack-row {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      background: rgba(255,255,255,0.5);
+      border-radius: 40px;
+      padding: 0.9rem 1.5rem;
+      border: 1px solid rgba(255,255,255,0.8);
+      transform: translateY(0);
+      transition: all 0.25s;
+    }
+    .stack-row:hover {
+      transform: translateY(-4px) scale(1.01);
+      background: white;
+      box-shadow: 0 12px 22px -14px #bbaef0;
+    }
+    .icon-bg {
+      width: 48px; height: 48px;
+      background: #efeaff;
+      border-radius: 30px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #4a3a7c;
+      font-size: 1.4rem;
+    }
+    .row-text h4 {
+      font-size: 1.2rem;
+      font-weight: 700;
+    }
+    .row-text p {
+      color: #5b5b78;
+      font-size: 0.9rem;
+    }
+    .row-value {
+      margin-left: auto;
+      font-weight: 800;
+      font-size: 1.2rem;
+      background: linear-gradient(145deg, #322b5e, #7f6aee);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    /* features grid */
+    .features {
+      padding: 5rem 2rem;
+      background: #ffffff;
+    }
+    .section-label {
+      text-align: center;
+      text-transform: uppercase;
+      letter-spacing: 4px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: #8f85c7;
+      margin-bottom: 1rem;
+    }
+    .features h2 {
+      font-size: 2.8rem;
+      font-weight: 700;
+      text-align: center;
+      max-width: 700px;
+      margin: 0 auto 3.5rem auto;
+      color: #151528;
+    }
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+    }
+    .feature-card {
+      background: #fbfaff;
+      padding: 2.5rem 1.8rem;
+      border-radius: 44px;
+      border: 1px solid #eee9ff;
+      transition: all 0.3s;
+      text-align: center;
+      animation: cardFade 0.7s backwards;
+    }
+    .feature-card:nth-child(1) { animation-delay: 0.1s; }
+    .feature-card:nth-child(2) { animation-delay: 0.2s; }
+    .feature-card:nth-child(3) { animation-delay: 0.3s; }
+    @keyframes cardFade {
+      0% { opacity: 0; transform: translateY(20px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+    .feature-card:hover {
+      transform: translateY(-12px);
+      background: white;
+      border-color: #d7cdff;
+      box-shadow: 0 30px 40px -20px #b19ef0;
+    }
+    .feature-icon {
+      width: 80px; height: 80px;
+      background: #e9e2ff;
+      border-radius: 30px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 1.8rem auto;
+      font-size: 2.3rem;
+      color: #402e8b;
+      transition: 0.2s;
+    }
+    .feature-card:hover .feature-icon {
+      background: #7f6aee;
+      color: white;
+    }
+    .feature-card h3 {
+      font-size: 1.7rem;
+      margin-bottom: 0.7rem;
+      font-weight: 700;
+    }
+    .feature-card p {
+      color: #5a5a77;
+      font-size: 1rem;
+      line-height: 1.6;
+    }
+
+    /* testimonials */
+    .testimonials {
+      padding: 5rem 2rem;
+      background: #f8f6ff;
+    }
+    .testimonial-grid {
+      display: flex;
+      gap: 2rem;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .testi-card {
+      background: white;
+      border-radius: 36px;
+      padding: 2rem 2rem 2rem 2rem;
+      max-width: 340px;
+      box-shadow: 0 15px 35px -10px rgba(0,0,0,0.05);
+      transition: all 0.25s;
+      border: 1px solid #fff;
+      animation: testiFade 0.9s backwards;
+    }
+    .testi-card:nth-child(2) { animation-delay: 0.15s; }
+    .testi-card:nth-child(3) { animation-delay: 0.3s; }
+    @keyframes testiFade {
+      0% { opacity: 0; transform: scale(0.96); }
+      100% { opacity: 1; transform: scale(1); }
+    }
+    .testi-card:hover {
+      border-color: #ccc1ff;
+      transform: scale(1.02) translateY(-5px);
+      box-shadow: 0 40px 50px -20px #bbaef0;
+    }
+    .stars {
+      color: #ffc575;
+      font-size: 1.2rem;
+      letter-spacing: 4px;
+      margin-bottom: 1.2rem;
+    }
+    .testi-text {
+      font-size: 1.1rem;
+      font-weight: 400;
+      color: #31314b;
+      margin-bottom: 2rem;
+      line-height: 1.5;
+    }
+    .testi-author {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+    .author-avatar {
+      width: 48px; height: 48px;
+      background: #dad2ff;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      color: #1b1b2f;
+    }
+    .author-info h5 {
+      font-weight: 700;
+    }
+    .author-info p {
+      font-size: 0.85rem;
+      color: #7a7a9e;
+    }
+
+    /* cta section */
+    .cta-section {
+      padding: 5rem 2rem 6rem;
+      background: linear-gradient(120deg, #f2efff, #ffffff);
+      text-align: center;
+    }
+    .cta-glow {
+      max-width: 800px;
+      margin: 0 auto;
+      background: rgba(255,255,255,0.7);
+      backdrop-filter: blur(15px);
+      border-radius: 110px;
+      padding: 3.5rem 2rem;
+      border: 1px solid white;
+      box-shadow: 0 30px 50px -25px #9c8cd9;
+      animation: glowPulse 3s infinite alternate;
+    }
+    @keyframes glowPulse {
+      0% { box-shadow: 0 20px 40px -20px #b19ef0; }
+      100% { box-shadow: 0 40px 70px -15px #7f6aee; }
+    }
+    .cta-glow h2 {
+      font-size: 3rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      color: #12122b;
+    }
+    .cta-glow p {
+      font-size: 1.2rem;
+      color: #4f4f71;
+      max-width: 500px;
+      margin: 0 auto 2.5rem auto;
+    }
+    .btn-cta {
+      background: #7f6aee;
+      border: none;
+      color: white;
+      padding: 1.2rem 3.8rem;
+      border-radius: 80px;
+      font-weight: 700;
+      font-size: 1.2rem;
+      cursor: pointer;
+      transition: all 0.3s;
+      box-shadow: 0 20px 25px -10px #7f6aee;
+      border: 1px solid #7f6aee;
+    }
+    .btn-cta:hover {
+      background: #ffffff;
+      color: #1b1b2f;
+      transform: scale(1.04);
+      border-color: #1b1b2f;
+      box-shadow: 0 30px 35px -12px #b6a5f0;
+    }
+
+    /* footer */
+    .footer {
+      padding: 2rem 2rem 2.5rem;
+      background: #ffffff;
+      border-top: 1px solid #eee5ff;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+    }
+    .footer-links {
+      display: flex;
+      gap: 2rem;
+    }
+    .footer-links a {
+      text-decoration: none;
+      color: #4f4f6b;
+      font-weight: 500;
+    }
+    .socials i {
+      font-size: 1.5rem;
+      margin-left: 1.5rem;
+      color: #7f73b5;
+      transition: 0.2s;
+    }
+    .socials i:hover {
+      color: #352e5f;
+      transform: translateY(-3px);
+    }
+
+    /* responsive fine */
+    @media (max-width: 1000px) {
+      .hero-content { grid-template-columns: 1fr; text-align: center; }
+      .hero-desc { max-width: 100%; }
+      .cta-group { justify-content: center; }
+      .feature-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 650px) {
+      .feature-grid { grid-template-columns: 1fr; }
+      .header { flex-direction: column; gap: 1.2rem; }
+      .nav-links { flex-wrap: wrap; justify-content: center; }
+    }
+
+    /* extra micro-animations */
+    .premium-highlight {
+      transition: all 0.2s;
     }
   </style>
 </head>
 <body>
-  <div class="container">
-    <header>
-      <div class="logo">ProBiz</div>
-      <a class="btn" href="#buy">Sotib olish</a>
-    </header><section class="hero">
-  <div>
-    <h1>Ko‘p sotuv qiladigan professional sayt</h1>
-    <p>Mahsulot, kurs yoki servisni sotish uchun tayyor, tezkor va chiroyli landing sahifa. Hech qanday backend kerak emas — static.</p>
-    <div style="display:flex;gap:12px;margin-top:16px">
-      <a class="btn" href="#buy">Hozir sotib oling</a>
-      <a class="card" href="#features">Batafsil</a>
+<div class="site-wrapper">
+  <!-- header with animation -->
+  <section class="hero-section">
+    <div class="header">
+      <div class="logo"><i class="fas fa-crown"></i> premium<span style="font-weight:300">lend</span></div>
+      <div class="nav-links">
+        <a href="#">features</a>
+        <a href="#">story</a>
+        <a href="#">pricing</a>
+        <a href="#" class="nav-btn">get access <i class="fas fa-arrow-right"></i></a>
+      </div>
     </div>
-  </div>
-  <div class="card">
-    <img src="https://picsum.photos/600/400" alt="preview" style="width:100%;border-radius:12px"/>
-  </div>
-</section>
 
-<section id="features">
-  <h2>Afzalliklar</h2>
-  <div class="grid">
-    <div class="card feature"><h3>Tez yuklanadi</h3><p>100% static — CDN orqali juda tez ishlaydi.</p></div>
-    <div class="card feature"><h3>SEO tayyor</h3><p>Google uchun optimallashtirilgan tuzilma.</p></div>
-    <div class="card feature"><h3>Oson sozlash</h3><p>Faqat matn va rasmlarni almashtirasiz.</p></div>
-  </div>
-</section>
+    <!-- hero main -->
+    <div class="hero-content">
+      <div class="hero-left">
+        <span class="premium-badge"><i class="fas fa-gem" style="margin-right:6px;"></i> exclusive $1k lend edition</span>
+        <h1>where <span>premium</span> meets <span>velocity</span></h1>
+        <p class="hero-desc">ultra‑fast lending, wrapped in a silky animation layer. one page, infinite possibilities — crafted for the 0.01%.</p>
+        <div class="cta-group">
+          <button class="btn-primary"><i class="fas fa-bolt"></i> activate lend</button>
+          <button class="btn-outline"><i class="far fa-compass"></i> discover</button>
+        </div>
+        <div style="margin-top: 2.5rem; display: flex; gap: 2rem; color:#716c9e; font-weight:500;">
+          <span><i class="fas fa-check-circle" style="color:#7f6aee;"></i> no code</span>
+          <span><i class="fas fa-check-circle" style="color:#7f6aee;"></i> instant approval</span>
+          <span><i class="fas fa-check-circle" style="color:#7f6aee;"></i> 1k$ vibe</span>
+        </div>
+      </div>
+      <div class="hero-right">
+        <div class="card-stack">
+          <div class="stack-row">
+            <div class="icon-bg"><i class="fas fa-hand-holding-usd"></i></div>
+            <div class="row-text"><h4>premium lend</h4><p>up to $1k instant</p></div>
+            <div class="row-value">0% fee</div>
+          </div>
+          <div class="stack-row">
+            <div class="icon-bg"><i class="fas fa-chart-line"></i></div>
+            <div class="row-text"><h4>yield pass</h4><p>auto compounding</p></div>
+            <div class="row-value">18.6%</div>
+          </div>
+          <div class="stack-row">
+            <div class="icon-bg"><i class="fas fa-shield-alt"></i></div>
+            <div class="row-text"><h4>cover+</h4><p>insured by chorus</p></div>
+            <div class="row-value">AAA</div>
+          </div>
+          <div class="stack-row">
+            <div class="icon-bg"><i class="fas fa-clock"></i></div>
+            <div class="row-text"><h4>lightning</h4><p>settle 0.3s</p></div>
+            <div class="row-value"><i class="fas fa-infinity"></i></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-<section style="margin-top:40px">
-  <h2>Mijozlar fikri</h2>
-  <div class="testimonials">
-    <div class="card"><p>"2 kunda 500$ savdo qildim."</p><small>— Ali</small></div>
-    <div class="card"><p>"Eng zo‘r landing template."</p><small>— Madina</small></div>
-  </div>
-</section>
+  <!-- features grid premium animation -->
+  <section class="features">
+    <div class="section-label">✧ why we are premium ✧</div>
+    <h2>crafted like a 5-star hotel,<br> but for your capital.</h2>
+    <div class="feature-grid">
+      <div class="feature-card">
+        <div class="feature-icon"><i class="fas fa-gem"></i></div>
+        <h3>zero friction</h3>
+        <p>one-click lending, no documents, no delays — just pure motion.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon"><i class="fas fa-mask"></i></div>
+        <h3>private & sovereign</h3>
+        <p>your data never leaves. we built on zero‑knowledge proofs.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon"><i class="fas fa-bolt"></i></div>
+        <h3>liquid always</h3>
+        <p>access funds 24/7 with our proprietary liquidity layer.</p>
+      </div>
+    </div>
+  </section>
 
-<section id="buy" style="margin-top:40px">
-  <div class="card">
-    <h2>Narx</h2>
-    <div class="price"><b>$19</b><span>bir martalik</span></div>
-    <p>Darhol yuklab olib ishlatishingiz mumkin.</p>
-    <!-- GUMROAD LINKNI SHU YERGA QO‘YING -->
-    <a class="btn" href="#">Gumroad orqali sotib olish</a>
-  </div>
-</section>
+  <!-- testimonials with smooth animation -->
+  <section class="testimonials">
+    <div class="section-label">◈ trusted by the elite ◈</div>
+    <h2 style="text-align:center; font-size:2.5rem; margin-bottom:3rem;">what premium lenders say</h2>
+    <div class="testimonial-grid">
+      <div class="testi-card">
+        <div class="stars">★★★★★</div>
+        <div class="testi-text">“The interface literally floats. I’ve never seen a lending page feel like a private jet dashboard.”</div>
+        <div class="testi-author">
+          <div class="author-avatar">J.S</div>
+          <div class="author-info"><h5>Jonathan Shaw</h5><p>fund manager</p></div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <div class="stars">★★★★★</div>
+        <div class="testi-text">“Worth every penny of the $1k lend. Smooth, responsive, insanely premium — animations are chef’s kiss.”</div>
+        <div class="testi-author">
+          <div class="author-avatar">V.K</div>
+          <div class="author-info"><h5>Victoria Kane</h5><p>angel investor</p></div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <div class="stars">★★★★★</div>
+        <div class="testi-text">“I felt like I was lending from a luxury boutique. One page, but infinite depth. flawless.”</div>
+        <div class="testi-author">
+          <div class="author-avatar">M.D</div>
+          <div class="author-info"><h5>Marcus DuPont</h5><p>heir / founder</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-<footer>
-  © 2026 ProBiz. Barcha huquqlar himoyalangan.
-</footer>
+  <!-- call to action section with glowing animation -->
+  <section class="cta-section">
+    <div class="cta-glow">
+      <h2>secure your $1k lend</h2>
+      <p>only the first 100 get the ultra-premium card & animation pass.</p>
+      <button class="btn-cta"><i class="fas fa-star" style="margin-right:10px;"></i> claim your spot</button>
+    </div>
+  </section>
 
-  </div>
-</body>
-</html>
+  <!-- footer -->
+  <footer class="footer">
+    <div class="logo" style="font-size:1.5rem;"><i class="fas fa-crown"></i> premiumlen

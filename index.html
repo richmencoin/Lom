@@ -1,0 +1,89 @@
+<!DOCTYPE html><html lang="uz">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ProBiz — Professional Landing</title>
+  <meta name="description" content="Ko‘p sotuv qiladigan professional landing sahifa." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root{--bg:#0b0f19;--card:#121829;--text:#e6e9f2;--muted:#9aa3b2;--brand:#6c8cff;--brand2:#22d3ee}
+    *{box-sizing:border-box}
+    body{margin:0;font-family:Inter,system-ui,Arial;background:linear-gradient(180deg,#0b0f19,#0b0f19 60%,#0a0e17);color:var(--text)}
+    a{color:inherit;text-decoration:none}
+    .container{max-width:1100px;margin:0 auto;padding:24px}
+    header{display:flex;align-items:center;justify-content:space-between}
+    .logo{font-weight:800;letter-spacing:.5px}
+    .btn{background:linear-gradient(135deg,var(--brand),var(--brand2));padding:12px 18px;border-radius:12px;font-weight:700;box-shadow:0 10px 30px rgba(108,140,255,.35)}
+    .hero{display:grid;grid-template-columns:1.1fr .9fr;gap:28px;align-items:center;padding:48px 0}
+    .hero h1{font-size:48px;line-height:1.05;margin:0 0 14px}
+    .hero p{color:var(--muted);font-size:18px}
+    .card{background:var(--card);border-radius:20px;padding:22px;box-shadow:0 20px 60px rgba(0,0,0,.35)}
+    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:22px}
+    .feature h3{margin:8px 0}
+    .price{display:flex;align-items:baseline;gap:8px}
+    .price b{font-size:40px}
+    .testimonials{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+    footer{color:var(--muted);padding:28px 0;text-align:center}
+    @media (max-width:900px){
+      .hero{grid-template-columns:1fr}
+      .grid{grid-template-columns:1fr}
+      .testimonials{grid-template-columns:1fr}
+      .hero h1{font-size:36px}
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="logo">ProBiz</div>
+      <a class="btn" href="#buy">Sotib olish</a>
+    </header><section class="hero">
+  <div>
+    <h1>Ko‘p sotuv qiladigan professional sayt</h1>
+    <p>Mahsulot, kurs yoki servisni sotish uchun tayyor, tezkor va chiroyli landing sahifa. Hech qanday backend kerak emas — static.</p>
+    <div style="display:flex;gap:12px;margin-top:16px">
+      <a class="btn" href="#buy">Hozir sotib oling</a>
+      <a class="card" href="#features">Batafsil</a>
+    </div>
+  </div>
+  <div class="card">
+    <img src="https://picsum.photos/600/400" alt="preview" style="width:100%;border-radius:12px"/>
+  </div>
+</section>
+
+<section id="features">
+  <h2>Afzalliklar</h2>
+  <div class="grid">
+    <div class="card feature"><h3>Tez yuklanadi</h3><p>100% static — CDN orqali juda tez ishlaydi.</p></div>
+    <div class="card feature"><h3>SEO tayyor</h3><p>Google uchun optimallashtirilgan tuzilma.</p></div>
+    <div class="card feature"><h3>Oson sozlash</h3><p>Faqat matn va rasmlarni almashtirasiz.</p></div>
+  </div>
+</section>
+
+<section style="margin-top:40px">
+  <h2>Mijozlar fikri</h2>
+  <div class="testimonials">
+    <div class="card"><p>"2 kunda 500$ savdo qildim."</p><small>— Ali</small></div>
+    <div class="card"><p>"Eng zo‘r landing template."</p><small>— Madina</small></div>
+  </div>
+</section>
+
+<section id="buy" style="margin-top:40px">
+  <div class="card">
+    <h2>Narx</h2>
+    <div class="price"><b>$19</b><span>bir martalik</span></div>
+    <p>Darhol yuklab olib ishlatishingiz mumkin.</p>
+    <!-- GUMROAD LINKNI SHU YERGA QO‘YING -->
+    <a class="btn" href="#">Gumroad orqali sotib olish</a>
+  </div>
+</section>
+
+<footer>
+  © 2026 ProBiz. Barcha huquqlar himoyalangan.
+</footer>
+
+  </div>
+</body>
+</html>
